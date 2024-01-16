@@ -6,54 +6,131 @@
     <title>Color Contrast</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="copytextstyle.css">
 </head>
 <body>
 
     <div id="title">
         <h1>Color Contrast Checker</h1>
-        <p style="color: #888888;">A tool to help visualize how different color combinations would look on top of each other.</p>
+        <p style="color: #888888;">A tool to help visualize how different color combinations would look on top of each other with their color-contrast ratios.</p>
     </div>
 
     <div class="contrast-tracker">
 
-        <div class="color-flex">
-            <div class="flex-vert"><h2>Text Color</h2>
-                <div class="color-container">
-                    <input id="color-pick" class="color-pick" type="color">
-                    <input id="color-output" class="color-output" type="text" maxlength="7" value="#FFFFFF">
-                    <div class="tooltip">
-                        <button onclick="myFunction()" onmouseout="outFunc()">
-                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
-                        <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <button id="swap"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
-            <div class="flex-vert"><h2>Background Color</h2>
-                <div class="color-container">
-                    <input id="color-pick2" class="color-pick" type="color">
-                    <input id="color-output2" class="color-output" type="text" maxlength="7" value="#007bff">
-                    <div class="tooltip">
-                        <button onclick="myFunction2()" onmouseout="outFunc2()">
-                        <span class="tooltiptext" id="myTooltip2">Copy to clipboard</span>
-                        <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="texto-contrasto">
-            <p><b style="font-size: large;">Text Fr</b> <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur blanditiis quaerat hic eaque eveniet, maiores quas eligendi cum ab mollitia facilis fuga nobis amet fugit provident, doloribus ea et obcaecati.</p>
+        <div class="color-flex">
+            <div class="color-picker-flex">
+                <div class="flex-vert"><h2>Text Color</h2>
+                    <div class="color-container">
+                        <input id="color-pick" class="color-pick" type="color">
+                        <input id="color-output" class="color-output" type="text" maxlength="7" value="#FFFFFF">
+                        <div class="tooltip">
+                            <button onclick="myFunction()" onmouseout="outFunc()">
+                            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                            <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button id="swap"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                <div class="flex-vert"><h2>Background Color</h2>
+                    <div class="color-container">
+                        <input id="color-pick2" class="color-pick" type="color">
+                        <input id="color-output2" class="color-output" type="text" maxlength="7" value="#007bff">
+                        <div class="tooltip">
+                            <button onclick="myFunction2()" onmouseout="outFunc2()">
+                            <span class="tooltiptext" id="myTooltip2">Copy to clipboard</span>
+                            <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cflex-bottom">
+
+                <div class="extras">
+
+                    <div id="extra-settings">View Extra Settings <i class="fa fa-angle-down rotate" style="transition: all 0.4s ease;"></i></div>
+
+                    <div class="slide">
+                        <div class="grad-container">
+                            <div class="flex-vert"><h2 class="disable">Gradient Color</h2>
+                                <div class="gradient disable">
+                                    <div class="color-container">
+                                        <input id="gradient-pick" class="color-pick" type="color" value="#FF0000">
+                                        <input id="gradient-output" class="color-output" type="text" maxlength="7" value="#FF0000">
+                                        <div class="tooltip">
+                                            <button onclick="myFunction3()" onmouseout="outFunc3()">
+                                                <span class="tooltiptext" id="myTooltip3">Copy to clipboard</span>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </div>
+                                        <button id="swap_grad"><i style="rotate: 90deg;" class="fa-solid fa-arrow-right-arrow-left"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grad-checkbox">
+                                <input type="checkbox" id="gradient-maker">
+                                <label for="gradient-maker">Enable Gradient</label>
+                            </div>
+                        </div>
+                        <div class="font-size-slider">
+                            <label for="font-size">Font Size</label>
+                            <input type="range" id="font-size">
+                        </div>
+                        <div class="font-weight-slider">
+                            <label for="font-weight">Font Weight</label>
+                            <input type="range" id="font-weight">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contrast-displayer">
+                    <h2>Contrast Score</h2>
+                    <div class="contrast-display">
+                        <p>"Fill"</p>
+                        <div class="stars">
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-regular fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-regular fa-star" style="font-size: 16px;"></i>
+                        </div>
+                    </div>
+                    <div class="contrast-gradient">
+                        <p>"Fill"</p>
+                        <div class="stars">
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-solid fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-regular fa-star" style="font-size: 16px;"></i>
+                            <i class="fa-regular fa-star" style="font-size: 16px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        
+    
+
+        <div class="texto-contrasto" style="overflow: hidden;">
+            <p><span id="text-fr" style="font-size: 24px; font-weight: 600;">Adjustable Text</span> <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur blanditiis quaerat hic eaque eveniet, maiores quas eligendi cum ab mollitia facilis fuga nobis amet fugit provident, doloribus ea et obcaecati.</p>
         </div>
         
     </div>
 
-    <script
-    src="https://code.jquery.com/jquery-3.7.1.js"
-    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+    <p style="color: #888888; margin-top: 12px; ">Note:&nbsp;The color-contrast value is only given as a reference number and should not be viewed as a make-or-break value in your designs.</p>
+
     <script src="script.js"></script>
+    <script src="copy-text.js"></script>
+    <script src="gradient.js"></script>
+    <script src="swap.js"></script>
+    <script src="fontsize.js"></script>
+    <script src="extras-panel.js"></script>
+    <script src="color-contrast.js"></script>
 </body>
 </html>
