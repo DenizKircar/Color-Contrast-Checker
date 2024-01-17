@@ -70,7 +70,7 @@ function updateContrast(which, x, y) {
     
     document.querySelector(`#contrast-displayer .contrast-${which} p`).textContent = contrastValue;
 
-    if(contrastValue >= 7) {
+    if(contrastValue >= 4.5) {
         contrastDisplay.style.background = "#d2fbd0";
         contrastDisplay.style.color = "#0d5f07";
 
@@ -78,34 +78,34 @@ function updateContrast(which, x, y) {
             for(let i=0; i<5; i++) {
                 stars[i].classList = "fa-solid fa-star";
             }
-        } else {
+        } else if(contrastValue >= 7) {
             for(let i=0; i<4; i++) {
                 stars[i].classList = "fa-solid fa-star";
-            } stars[4].classList = "fa-regular fa-star";}
+            } stars[4].classList = "fa-regular fa-star";
+        } else {
+            for(let i=0; i<3; i++) {stars[i].classList = "fa-solid fa-star";}
+            stars[3].classList = "fa-regular fa-star";
+            stars[4].classList = "fa-regular fa-star";
+        }
+            
+    } else if (contrastValue >= 3) {
 
-    } else if (contrastValue >= 4.5) {
         contrastDisplay.style.background = "#fbf5d0";
         contrastDisplay.style.color = "#5f5207";
-
-        for(let i=0; i<3; i++) {stars[i].classList = "fa-solid fa-star";}
-        stars[3].classList = "fa-regular fa-star";
-        stars[4].classList = "fa-regular fa-star";
-
-    } else if (contrastValue >= 0) {
-        contrastDisplay.style.background = "#fbd0da";
-        contrastDisplay.style.color = "#5f071c";
-
-        if(contrastValue >= 3) {
             for(let i=0; i<2; i++) {
                 stars[i].classList = "fa-solid fa-star";
             }
             for(let i=0; i<3; i++) {
                 stars[4-i].classList = "fa-regular fa-star";
             }
-        } else {
+
+    } else if (contrastValue >= 0) {
+
+        contrastDisplay.style.background = "#fbd0da";
+        contrastDisplay.style.color = "#5f071c";        
             for(let i=0; i<5; i++) {
                 stars[4-i].classList = "fa-regular fa-star";
-            } stars[0].classList = "fa-solid fa-star";}
+            } stars[0].classList = "fa-solid fa-star";
     }
 }
 
