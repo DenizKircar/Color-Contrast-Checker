@@ -15,6 +15,8 @@ document.querySelector("#swap").addEventListener("click", () => {
         color_scn.value = text_color;
         color_picker_scn.value = text_color;
         document.querySelector(".texto-contrasto").style.background = `linear-gradient(to ${direction}, ${color_picker_scn.value}, ${grad_picker.value})`;
+
+        
     }
 
     else {
@@ -29,7 +31,11 @@ document.querySelector("#swap").addEventListener("click", () => {
         color_scn.value = text_color;
         color_picker_scn.value = text_color;
         document.querySelector(".texto-contrasto").style.background = `${color_picker_scn.value}`
+
+        
     }
+    updateContrast("display", color_picker_scn, color_picker);
+        updateContrast("gradient", grad_picker, color_picker);
     
 })
 
